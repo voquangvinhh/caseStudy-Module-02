@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top"> <!--//navbar-fixed-top-->
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav ">
+                <li class="active"><a href="/shop">Trang chủ</a></li>
+                <li class="dropdown">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a class="card-link btn btn-primary" th:href="@{/shop}">back to shop</a></li>
+                <li class="nav-item active">
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br><br>
+<div class="col-sm-3 pt-3">
+    <div class="card" style="background-color:white;">
+        <div class="card-body">
+            <h4 class="card-title">Products</h4>
+            <p class="card-text">Manage all products here.</p>
+            <a href="#" th:href="@{/admin/pet}" class="card-link btn btn-primary">Manage</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

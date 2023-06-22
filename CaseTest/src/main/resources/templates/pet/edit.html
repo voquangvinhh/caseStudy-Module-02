@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>edit pet</h1>
+<p>
+  <a href="/admin/pet">pet list</a>
+</p>
+<th:block th:if="${message}">
+  <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/admin/pet/edit}" th:object="${pet}" method="post">
+  <table>
+    <tr>
+
+      <td><input type="hidden" th:field="*{id}"/></td>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" th:field="*{namePet}"/></td>
+    </tr>
+    <tr>
+      <td>gender:</td>
+      <td><input type="text" th:field="*{gender}"/></td>
+    </tr>
+    <tr>
+      <td>age:</td>
+      <td><input type="text" th:field="*{age}"/></td>
+    </tr>
+    <tr>
+      <td>species:</td>
+      <td>  <select th:field="*{categoryPet}">
+        <option th:each="p:${species}" th:value="${p.id}" th:text="${p.name}"></option>
+        <
+      </select>
+      </td>
+    </tr>
+    <tr>
+      <td>avatar:</td>
+      <td><input type="file" th:field="*{avatar}"/></td>
+    </tr>
+    <tr>
+      <td>price:</td>
+      <td><input type="text" th:field="*{price}"/></td>
+    </tr>
+    <tr>
+      <td>quantity:</td>
+      <td><input type="text" th:field="*{quantity}"/></td>
+    </tr>
+    <tr>
+      <td>description:</td>
+      <td><input type="text" th:field="*{description}"/></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="edit pet"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<a href="/admin/pet">pet list</a>
+<form th:action="@{/admin/delete-pet}" th:object="${pet}" method="post">
+  <input th:type="hidden" name="id" th:field="*{id}">
+  <p>are you sure want to delete this</p>
+  <p th:text="${pet.namePet}"></p>
+  <p th:text="${pet.gender}"></p>
+  <img height="100px" width="100px" th:src="@{${'/petImg/' + pet.avatar}}">
+  <button type="submit" >delete</button>
+</form>
+</body>
+</html>

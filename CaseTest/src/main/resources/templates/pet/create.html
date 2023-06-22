@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create pet</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .blue{
+      color: #CC6600;
+      /*color: #CC7653;*/
+    }
+  </style>
+</head>
+<body>
+<h1>Create pet</h1>
+<p>
+  <a href="/admin/pet">pet list</a>
+</p>
+<th:block th:if="${message}">
+  <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/admin/create-pet}" th:object="${pets}" method="post">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" th:field="*{namePet}"/></td>
+    </tr>
+    <tr>
+      <td>gender:</td>
+      <td><input type="text" th:field="*{gender}"/></td>
+    </tr>
+    <tr>
+      <td>age:</td>
+      <td><input type="text" th:field="*{age}"/></td>
+    </tr>
+    <tr>
+      <td>species:</td>
+      <td>  <select th:field="*{categoryPet}">
+        <option th:each="p:${species}" th:value="${p.id}" th:text="${p.name}"></option>
+        <
+      </select>
+      </td>
+    </tr>
+    <tr>
+      <td>avatar:</td>
+      <td><input type="file" th:field="*{avatar}"/></td>
+    </tr>
+    <tr>
+      <td>price:</td>
+      <td><input type="text" th:field="*{price}"/></td>
+    </tr>
+    <tr>
+      <td>quantity:</td>
+      <td><input type="text" th:field="*{quantity}"/></td>
+    </tr>
+    <tr>
+      <td>description:</td>
+      <td><input type="text" th:field="*{description}"/></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Create pet"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>List Customer</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center">List Pet</h1>
+  <div class="text-right">
+    <a href="/admin/create-pet" class="btn btn-primary">Create Pet</a>
+    <a href="/admin/" class="btn btn-secondary">admin</a>
+  </div>
+  <br>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>gender</th>
+      <th>age</th>
+      <th>species</th>
+      <th>avatar</th>
+      <th>price</th>
+      <th>quantity</th>
+      <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pet : ${pets}">
+      <td th:text="${pet.id}"></td>
+      <td th:text="${pet.namePet}"></td>
+      <td th:text="${pet.gender}"></td>
+      <td th:text="${pet.age}"></td>
+      <td th:if="${pet.categoryPet}" th:text="${pet.categoryPet.name}"></td>
+      <td><img height="100px" width="100px" th:src="@{${'/petImg/' + pet.avatar}}"></td>
+      <td th:text="${pet.price}"></td>
+      <td th:text="${pet.quantity}"></td>
+      <td th:text="${pet.description}"></td>
+
+      <td><a th:href="@{/admin/pet/edit/__${pet.id}__ }" class="btn btn-warning">view</a></td>
+      <td><a th:href="@{/admin/pet/delete/__${pet.id}__ }" class="btn btn-danger">Delete</a></td>
+    </tr>
+    </tbody>
+    <div>
+
+      <a th:href="@{'/admin/pet'(page=${pets.number - 1})}"
+         th:if="${pets.hasPrevious()}">Previous</a>
+      <a th:if="${pets.hasPrevious()}"
+         th:href="@{'/admin/pet'(page=${pets.number - 1})}"
+         th:text="${pets.number }"></a>
+      <a th:text="${pets.number + 1}"
+         th:href="@{'/admin/pet'(page=${pets.number})}"></a>
+      <a th:if="${pets.hasNext()}"
+         th:href="@{'/admin/pet'(page=${pets.number + 1})}"
+         th:text="${pets.number + 2}"></a>
+      <a th:href="@{'/admin/pet'(page=${pets.number + 1})}" th:if="${pets.hasNext()}">Next</a>
+    </div>
+  </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
